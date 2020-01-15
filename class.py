@@ -3,7 +3,7 @@ from git import *
 import git, os, shutil
 
 # create local Repo/Folder
-#UPLOAD_FOLDER = "F:\zealot"
+##UPLOAD_FOLDER = "F:\zealot"
 UPLOAD_FOLDER = "F:\python\python_test1"
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
