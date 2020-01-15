@@ -1,19 +1,15 @@
 import os
-#os.system('pip3 install gitpython')
+os.system('pip3 install gitpython')
 
 import git, shutil
 
 # create local Repo/Folder
 if os.name == 'nt':
-    UPLOAD_FOLDER = os.environ['OLDPWD'] + '%USERPROFILE%\Desktop\python1_test'
-    #UPLOAD_FOLDER = "C:\python_test"
+    UPLOAD_FOLDER = os.environ['USERPROFILE'] + '\Desktop\python1_test'
 else:
     UPLOAD_FOLDER = os.environ['OLDPWD'] + '/python1_test'
 
 new_path = os.path.join(UPLOAD_FOLDER)
-
-#print (new_path)
-
 NAME = new_path
 URL = 'https://github.com/Darth-Kordis/python_test.git'
 BRANCH: str = 'another-new-one'
@@ -30,15 +26,14 @@ class git_operations():
                 if os.path.isdir(self.DIR_NAME):
                     shutil.rmtree(self.DIR_NAME)
                 os.mkdir(self.DIR_NAME)
-                print(self.DIR_NAME, '\n\r')
+            print(self.DIR_NAME, '\n\r')
 
             if not os.listdir(self.DIR_NAME):
                 repo = git.Repo.init(self.DIR_NAME)
                 origin = repo.create_remote('origin', self.REMOTE_URL)
                 origin.fetch()
                 origin.pull(origin.refs[0].remote_head)
-            print("repo cloned successfully")
-            print()
+            print("repo cloned successfully", '\n\r')
         except Exception as e:
             print(str(e))
 
@@ -51,8 +46,7 @@ class git_operations():
             else:
                 print('branch "' + self.NEW_BRANCH + '" is already exist')
             print("available branches:")
-            print(repo.heads)
-            print()
+            print(repo.heads, '\n\r')
         except Exception as e:
             print(str(e))
 
@@ -61,7 +55,7 @@ class git_operations():
             repo = git.Repo(self.DIR_NAME)
             repo.git.checkout(self.NEW_BRANCH)
             branch = repo.active_branch
-            print("active branch is: " + branch.name)
+            print("active branch is: " + branch.name, '\n\r')
         except Exception as e:
             print(str(e))
 
