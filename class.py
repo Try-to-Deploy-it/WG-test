@@ -1,5 +1,4 @@
 import os.path
-#from git import *
 import git, os, shutil
 
 # create local Repo/Folder
@@ -9,9 +8,6 @@ if os.name == 'nt':
 else:
     UPLOAD_FOLDER = "~/python1_test"
 
-#if not os.path.exists(UPLOAD_FOLDER):
-#    os.makedirs(UPLOAD_FOLDER)
-#    print(UPLOAD_FOLDER)
 new_path = os.path.join(UPLOAD_FOLDER)
 DIR_NAME = new_path
 REMOTE_URL = "https://github.com/Darth-Kordis/python_test.git"
