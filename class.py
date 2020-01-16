@@ -1,13 +1,13 @@
 import os
 os.system('pip3 install gitpython')
 
-import git, shutil
+import git, time
 
 # create local Repo/Folder
 if os.name == 'nt':
-    UPLOAD_FOLDER = os.environ['USERPROFILE'] + '\Desktop\python1_test'
+    UPLOAD_FOLDER = os.environ['USERPROFILE'] + '\Desktop\WG-test'
 else:
-    UPLOAD_FOLDER = os.environ['OLDPWD'] + '/python1_test'
+    UPLOAD_FOLDER = os.environ['OLDPWD'] + '/WG-test'
 
 new_path = os.path.join(UPLOAD_FOLDER)
 NAME = new_path
@@ -23,8 +23,6 @@ class git_operations():
     def git_clone(self):
         try:
             if not os.path.exists(self.DIR_NAME):
-                if os.path.isdir(self.DIR_NAME):
-                    shutil.rmtree(self.DIR_NAME)
                 os.mkdir(self.DIR_NAME)
             print(self.DIR_NAME, '\n\r')
 
@@ -55,7 +53,7 @@ class git_operations():
             repo = git.Repo(self.DIR_NAME)
             repo.git.checkout(self.NEW_BRANCH)
             branch = repo.active_branch
-            print("active branch is: " + branch.name, '\n\r')
+            print("switching to '" + branch.name + "' branch", '\n\r')
         except Exception as e:
             print(str(e))
 
@@ -66,6 +64,9 @@ class git_operations():
             commit_message = 'work in progress'
             repo.git.add('--all')
             repo.index.commit(commit_message)
+            commit = repo.head.commit
+            comtime = time.gmtime(commit.committed_date)
+            print("last commit was in " + time.strftime("%a, %d %b %Y %H:%M", comtime), '\n\r')
         except Exception as e:
             print(str(e))
 
