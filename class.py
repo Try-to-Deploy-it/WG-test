@@ -11,7 +11,7 @@ else:
 
 new_path = os.path.join(UPLOAD_FOLDER)
 NAME = new_path
-URL = 'https://github.com/Darth-Kordis/python_test.git'
+URL = 'https://github.com/Try-to-Depoy-it/WG-test.git'
 BRANCH: str = 'another-new-one'
 
 class git_operations():
