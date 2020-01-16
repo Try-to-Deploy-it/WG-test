@@ -3,7 +3,7 @@ os.system('pip3 install gitpython')
 
 import git, time
 
-# create local Repo/Folder
+# path to local Repo/Folder
 if os.name == 'nt':
     UPLOAD_FOLDER = os.environ['USERPROFILE'] + '\Desktop\WG-test'
 else:
